@@ -73,4 +73,18 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: test\UserBundle\Entity\User
-  
+    service:
+        mailer: fos_user.mailer.twig_swift
+    registration:
+        confirmation:
+            enabled: true
+            template:   '@FOSUser/Registration/email.txt.twig'
+    from_email:
+        address: noreply@domain.com
+        sender_name: "No Reply"
+    resetting:
+        email:
+            from_email:
+                address: noreply@domain.com
+                sender_name: "No Reply"
+            template:   FOSUserBundle:Resetting:email.txt.twig
